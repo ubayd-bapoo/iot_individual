@@ -29,11 +29,17 @@ def start_sensehat(client):
         if temperature != stored_temperature:
             stored_temperature = temperature
             if temperature > 34:
-                client.publish("topic/test", json.dumps({'temp': temperature, 'type': 'hot'}))
+                message = {'temp': temperature, 'type': 'hot'}
+                print(f'Writing Message {message}')
+                client.publish("topic/test", json.dumps(message))
             elif 34 > temperature > 24:
-                client.publish("topic/test", json.dumps({'temp': temperature, 'type': 'medium'}))
+                message = {'temp': temperature, 'type': 'medium'}
+                print(f'Writing Message {message}')
+                client.publish("topic/test", json.dumps(message))
             else:
-                client.publish("topic/test", json.dumps({'temp': temperature, 'type': 'cold'}))
+                message = {'temp': temperature, 'type': 'cold'}
+                print(f'Writing Message {message}')
+                client.publish("topic/test", json.dumps(message))
 
 
 if __name__ == "__main__":

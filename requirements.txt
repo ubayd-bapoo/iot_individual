@@ -1,0 +1,9 @@
+asgiref==3.5.0
+Django==3.2.13
+paho-mqtt==1.6.1
+pytz==2022.1
+sqlparse==0.4.2
+typing_extensions==4.2.0
+numpy==1.21.6
+Pillow==9.1.0
+sense-emu==1.1

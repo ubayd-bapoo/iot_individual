@@ -9,10 +9,10 @@ client.connect(broker)
 client.disconnect()
 
 sense = SenseHat()
-stored_temperature = sense.get_temperature()
+stored_temperature = round(sense.get_temperature(), 0)
 
 while True:
-    temperature = sense.get_temperature()
+    temperature = round(sense.get_temperature(), 0)
     if temperature != stored_temperature:
         print(temperature, stored_temperature)
         stored_temperature = temperature

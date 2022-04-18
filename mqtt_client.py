@@ -15,6 +15,7 @@ while True:
     temperature = sense.get_temperature()
     if temperature != stored_temperature:
         print(temperature, stored_temperature)
+        stored_temperature = temperature
     #     if temperature > 34:
     #         print('hot')
     #     elif 34 > temperature > 24:

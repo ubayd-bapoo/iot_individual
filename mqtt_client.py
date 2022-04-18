@@ -1,7 +1,7 @@
 from sense_emu import SenseHat
 import paho.mqtt.client as mqtt
 
-broker = '10.0.2.2 '
+broker = '10.0.2.2'
 
 client = mqtt.Client('test1')
 print('Connecting to broker:', broker)

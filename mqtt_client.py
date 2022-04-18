@@ -1,5 +1,7 @@
-from sense_emu import SenseHat
+import json
+
 import paho.mqtt.client as mqtt
+from sense_emu import SenseHat
 
 
 def on_connect(client, userdata, flags, rc):
@@ -15,9 +17,10 @@ def connect_broker():
     print('Connecting to broker:', broker)
     client.connect(broker)
     # client.loop_forever()
+    return client
 
 
-def start_sensehat():
+def start_sensehat(client):
     sense = SenseHat()
     stored_temperature = round(sense.get_temperature(), 0)
 
@@ -26,13 +29,13 @@ def start_sensehat():
         if temperature != stored_temperature:
             stored_temperature = temperature
             if temperature > 34:
-                print('hot')
+                client.publish("topic/test", json.dumps({'temp': temperature, 'type': 'hot'}))
             elif 34 > temperature > 24:
-                print('medium')
+                client.publish("topic/test", json.dumps({'temp': temperature, 'type': 'medium'}))
             else:
-                print('cold')
+                client.publish("topic/test", json.dumps({'temp': temperature, 'type': 'cold'}))
 
 
 if __name__ == "__main__":
-    connect_broker()
-    start_sensehat()
+    client = connect_broker()
+    start_sensehat(client)

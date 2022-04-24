@@ -3,7 +3,7 @@ import paho.mqtt.client as mqtt
 
 
 def on_connect(client, userdata, flags, rc):
-    print('Subscribe to topic')
+    print('Subscribe to MQTT topic')
     client.subscribe("topic/test")
 
 

@@ -1,4 +1,5 @@
 import json
+import time
 
 import paho.mqtt.client as mqtt
 from sense_emu import SenseHat
@@ -40,6 +41,7 @@ def start_sensehat(client):
                 message = {'temp': temperature, 'type': 'cold'}
                 print(f'Writing Message {message}')
                 client.publish("topic/test", json.dumps(message))
+            time.sleep(3)
 
 
 if __name__ == "__main__":

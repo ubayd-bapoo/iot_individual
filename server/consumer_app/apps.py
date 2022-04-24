@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class MqttConfig(AppConfig):
+class ConsumerAppConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'mqtt'
+    name = 'consumer_app'

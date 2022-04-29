@@ -24,6 +24,6 @@ class WebsocketConsumer(AsyncWebsocketConsumer):
                                             {"type": "websocket.send",
                                              "text": temperature})
 
-    async def websocket_disconnect(self):
+    async def disconnect(self, text_data):
         # when websocket disconnects
         print("disconnected")

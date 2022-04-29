@@ -9,13 +9,11 @@ from sense_emu import SenseHat
 HOST = '10.0.2.2'
 PORT = 8000
 
-
-def produce(message: str, host:str, port: int) -> None:
-    ws = websockets.connect(f"ws://{host}:{port}/ws/sensehat/")
-    ws.send(message)
-    ws.recv()
-    ws.close()
-
+async def produce(message: str, host:str, port: int) -> None:
+    async with websockets.connect(f"ws://{host}:{port}/ws/sensehat/") as ws:
+        ws.send(message)
+        ws.recv()
+        ws.close()
 
 def start_sensehat():
     sense = SenseHat()

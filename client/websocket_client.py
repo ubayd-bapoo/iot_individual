@@ -10,7 +10,7 @@ HOST = '10.0.2.2'
 PORT = 8000
 
 async def produce(message: str, host:str, port: int) -> None:
-    async with websockets.connect(f"ws://{host}:{port}") as ws:
+    async with websockets.connect(f"ws://{host}:{port}/ws/sensehat/") as ws:
         await ws.send(message)
         await ws.recv()
 

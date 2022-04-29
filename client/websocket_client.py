@@ -25,15 +25,15 @@ def start_sensehat():
             if temperature > 34:
                 message = {'temp': temperature, 'type': 'hot'}
                 print(f'Writing Message {message}')
-                produce(json.dumps(message), HOST, PORT)
+                asyncio.run(produce(json.dumps(message), HOST, PORT))
             elif 34 > temperature > 24:
                 message = {'temp': temperature, 'type': 'medium'}
                 print(f'Writing Message {message}')
-                produce(json.dumps(message), HOST, PORT)
+                asyncio.run(produce(json.dumps(message), HOST, PORT))
             else:
                 message = {'temp': temperature, 'type': 'cold'}
                 print(f'Writing Message {message}')
-                produce(json.dumps(message), HOST, PORT)
+                asyncio.run(produce(json.dumps(message), HOST, PORT))
             time.sleep(3)
 
 

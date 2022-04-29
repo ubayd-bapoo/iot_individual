@@ -13,7 +13,7 @@ async def produce(message: str, host:str, port: int) -> None:
     async with websockets.connect(f"ws://{host}:{port}/ws/sensehat/") as ws:
         await ws.send(message)
         await ws.recv()
-        await ws.close()
+        await ws.disconnect()
 
 def start_sensehat():
     sense = SenseHat()

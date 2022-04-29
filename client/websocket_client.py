@@ -11,9 +11,9 @@ PORT = 8000
 
 async def produce(message: str, host:str, port: int) -> None:
     async with websockets.connect(f"ws://{host}:{port}/ws/sensehat/") as ws:
-        ws.send(message)
-        ws.recv()
-        ws.close()
+        await ws.send(message)
+        await ws.recv()
+        await ws.close()
 
 def start_sensehat():
     sense = SenseHat()

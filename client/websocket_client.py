@@ -22,15 +22,15 @@ async def start_sensehat(host: str, port: int) -> None:
                 if temperature > 34:
                     message = {'temperature': temperature, 'type': 'hot'}
                     print(f'Writing Message {message}')
-                    ws.send(json.dumps(message))
+                    await ws.send(json.dumps(message))
                 elif 34 > temperature > 24:
                     message = {'temperature': temperature, 'type': 'medium'}
                     print(f'Writing Message {message}')
-                    ws.send(json.dumps(message))
+                    await ws.send(json.dumps(message))
                 else:
                     message = {'temperature': temperature, 'type': 'cold'}
                     print(f'Writing Message {message}')
-                    ws.send(json.dumps(message))
+                    await ws.send(json.dumps(message))
                 time.sleep(3)
 
 

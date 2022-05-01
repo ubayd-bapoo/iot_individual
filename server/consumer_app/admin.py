@@ -1,3 +1,10 @@
 from django.contrib import admin
+from .models import SensehatReading
 
-# Register your models here.
+class SensehatReadingAdmin(admin.ModelAdmin):
+    list_display = ('created', 'sensehat_sensor', 'reading', 'source')
+    list_filter = ('source',)
+
+
+admin.site.register(SensehatReading, SensehatReadingAdmin)
+

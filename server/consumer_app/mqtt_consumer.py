@@ -8,11 +8,17 @@ def on_connect(client, userdata, flags, rc):
 
 
 def on_message(client, userdata, msg):
-    print("message received ", str(msg.payload.decode("utf-8")))
-    print("message testing ", json.loads(msg.payload.decode("utf-8"))['temp'])
-    print("message topic=", msg.topic)
-    print("message qos=", msg.qos)
-    print("message retain flag=", msg.retain)
+    from .constants import SENSEHAT_SOURCE, SENSEHAT_SENSORS
+    from .models import SensehatReading
+    message = json.loads(msg.payload.decode("utf-8"))
+    print(f"Reading MQTT data: {message}")
+
+    try:
+        print("Saving MQTT to DB")
+        SensehatReading.objects.create(sensehat_sensor=0, source=0, reading=message['temp'])
+    except:
+        print("Error Saving MQTT to DB")
+        pass
 
 
 client = mqtt.Client()

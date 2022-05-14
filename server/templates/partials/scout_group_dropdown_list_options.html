@@ -1,0 +1,4 @@
+<option value="">---------</option>
+{% for scout_group in scout_groups %}
+<option value="{{ scout_group.pk }}">{{ scout_group.name }}</option>
+{% endfor %}

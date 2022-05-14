@@ -1,0 +1,19 @@
+{% load static %}
+        <!-- Side Navbar -->
+        <nav class="side-navbar z-index-40">
+          <!-- Sidebar Header-->
+          <div class="sidebar-header d-flex align-items-center py-4 px-3">
+            <div class="ms-3 title">
+              <h1 class="h4 mb-2">{{ user.first_name }} {{ user.last_name }}</h1>
+              <p class="text-sm text-gray-500 fw-light mb-0 lh-1">{{ user.groups.all.0 }}</p>
+            </div>
+          </div>
+          <!-- Sidebar Navidation Menus-->
+          <span class="text-uppercase text-gray-400 text-xs letter-spacing-0 mx-3 px-2 heading">Main</span>
+          <ul class="list-unstyled py-4">
+            <li class="sidebar-item {% ifequal nav_item.main 'Dashboard' %}active{% endifequal %}"><a class="sidebar-link" href="{% url 'dashboard' %}">
+                <svg class="svg-icon svg-icon-sm svg-icon-heavy me-xl-2">
+                  <use xlink:href="#real-estate-1"> </use>
+                </svg>Dashboard</a></li>
+          </ul>
+        </nav>

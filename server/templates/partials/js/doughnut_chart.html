@@ -1,0 +1,32 @@
+{% block scripts %}
+<script>
+"use strict";
+document.addEventListener("DOMContentLoaded", function () {
+    // ------------------------------------------------------- //
+    // Doughnut Chart
+    // ------------------------------------------------------ //
+    var DOUGHNUTCHARTEXMPLE = document.getElementById("{{ name }}");
+    var pieChartExample = new Chart(DOUGHNUTCHARTEXMPLE, {
+        type: "doughnut",
+        options: {
+            cutoutPercentage: 70,
+        },
+        data: {
+            labels: [{% for label in labels %}"{{ label }}",{% endfor %}],
+            datasets: [
+                {
+                    data: {{ data }},
+                    borderWidth: 0,
+                    backgroundColor: [{% for label_colour in label_colours %}"#{{ label_colour }}",{% endfor %}],
+                    hoverBackgroundColor: [{% for label_colour in label_colours %}"#{{ label_colour }}",{% endfor %}],
+                },
+            ],
+        },
+    });
+
+    var pieChartExample = {
+        responsive: true,
+    };
+});
+</script>
+{% endblock %}

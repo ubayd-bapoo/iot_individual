@@ -1,17 +1,10 @@
-# Built in imports.
 import json
 
-# Third Party imports.
-from channels.exceptions import DenyConnection
-from asgiref.sync import async_to_sync
 from channels.generic.websocket import AsyncWebsocketConsumer
 from channels.db import database_sync_to_async
 
-# Django imports.
-from django.core.exceptions import ObjectDoesNotExist
-from django.contrib.auth.models import AnonymousUser
-
 from .models import SensehatReading
+
 
 class WebsocketConsumer(AsyncWebsocketConsumer):
     @database_sync_to_async
@@ -38,7 +31,6 @@ class WebsocketConsumer(AsyncWebsocketConsumer):
         await self.channel_layer.group_send('websocket_client',
                                             {"type": "websocket.send",
                                              "text": websocket_data['temperature']})
-
 
     async def disconnect(self, text_data):
         # when websocket disconnects

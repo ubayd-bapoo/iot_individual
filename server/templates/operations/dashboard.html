@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% block content %}
+{% include 'header.html' %}
+          <section class="pb-0">
+            <div class="container-fluid">
+              <div class="row align-items-stretch">
+                {% if messages %}
+                {% for message in messages %}
+                <div class="col-lg-12">
+                <div class="card bg-{% if message.tags %}{{ message.tags }}{% endif %} text-white shadow">
+                  <div class="card-body">
+                    {{ message }}
+                  </div>
+                </div>
+                </div>
+                {% endfor %}
+                {% endif %}
+                <div class="col-lg-12">
+                  <h1 class="display-4">IOT</h1>
+                  <p class="lead">IOT Dashboard</p>
+                  <div class="card mb-0">
+                    <div class="card-body">
+                      <div class="row gx-5 bg-white">
+                        <!-- Item -->
+                        <div class="col-xl-3 col-sm-6 py-4 border-lg-end border-gray-200">
+                          <div class="d-flex align-items-center">
+                            <div class="icon flex-shrink-0 bg-violet">
+                              <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                                <use xlink:href="#numbers-1"> </use>
+                              </svg>
+                            </div>
+                            <div class="mx-3">
+                              <h6 class="h4 fw-light text-gray-600 mb-3">Total<br>Combined</h6>
+                            </div>
+                            <div class="number"><strong class="text-lg">{{ totals.total }}</strong></div>
+                          </div>
+                        </div>
+                        <!-- Item -->
+                        <div class="col-xl-3 col-sm-6 py-4 border-lg-end border-gray-200">
+                          <div class="d-flex align-items-center">
+                            <div class="icon flex-shrink-0 bg-green">
+                              <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                                <use xlink:href="#survey-1"> </use>
+                              </svg>
+                            </div>
+                            <div class="mx-3">
+                              <h6 class="h4 fw-light text-gray-600 mb-3">Total<br>MQTT</h6>
+                            </div>
+                            <div class="number"><strong class="text-lg">{{ totals.total_mqtt }}</strong></div>
+                          </div>
+                        </div>
+                        <!-- Item -->
+                        <div class="col-xl-3 col-sm-6 py-4 border-lg-end border-gray-200">
+                          <div class="d-flex align-items-center">
+                            <div class="icon flex-shrink-0 bg-orange">
+                              <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                                <use xlink:href="#numbers-1"> </use>
+                              </svg>
+                            </div>
+                            <div class="mx-3">
+                              <h6 class="h4 fw-light text-gray-600 mb-3">Total<br>Websockets</h6>
+                            </div>
+                            <div class="number"><strong class="text-lg">{{ totals.total_websocket }}</strong></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+{% include 'footer.html' %}
+{% endblock %}

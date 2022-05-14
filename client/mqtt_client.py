@@ -17,7 +17,6 @@ def connect_broker():
     client = mqtt.Client('Individual')
     print('Connecting to broker:', broker)
     client.connect(broker)
-    # client.loop_forever()
     return client
 
 
